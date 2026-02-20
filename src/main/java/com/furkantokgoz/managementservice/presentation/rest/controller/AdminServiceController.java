@@ -46,15 +46,14 @@ public class AdminServiceController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping()
+    @PutMapping("/{id}")
     public ResponseEntity<EntityModel<AdminServiceResponse>> update(@PathVariable String id,@RequestBody AdminServiceRequest adminServiceRequest) {
         if(!serviceResponseMap.containsKey(id)) {
             throw new NoSuchElementException(HttpStatus.NOT_FOUND.toString());
         }
         AdminServiceResponse adminServiceResponse = new AdminServiceResponse(UUID.randomUUID().toString(), adminServiceRequest.getUsername(), adminServiceRequest.getPassword());
         serviceResponseMap.put(adminServiceResponse.getId(), adminServiceResponse);
-
-
+        return ResponseEntity.ok(toModel(adminServiceResponse).add(linkTo(methodOn(AdminServiceController.class).get(id)).withSelfRel()));
     }
 
 
