@@ -5,11 +5,14 @@ import com.furkantokgoz.managementservice.domain.model.AdminServiceRequest;
 import com.furkantokgoz.managementservice.domain.model.AdminServiceResponse;
 import com.furkantokgoz.managementservice.domain.model.ServiceResponse;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -36,8 +39,21 @@ public class AdminServiceController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?>  delete(@PathVariable String id) {
+        if(!serviceResponseMap.containsKey(id)) {
+            throw new NoSuchElementException(HttpStatus.NOT_FOUND.toString());
+        }
         serviceResponseMap.remove(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<EntityModel<AdminServiceResponse>> update(@PathVariable String id,@RequestBody AdminServiceRequest adminServiceRequest) {
+        if(!serviceResponseMap.containsKey(id)) {
+            throw new NoSuchElementException(HttpStatus.NOT_FOUND.toString());
+        }
+        AdminServiceResponse adminServiceResponse = new AdminServiceResponse(UUID.randomUUID().toString(), adminServiceRequest.getUsername(), adminServiceRequest.getPassword());
+        serviceResponseMap.put(adminServiceResponse.getId(), adminServiceResponse);
+        return ResponseEntity.ok(toModel(adminServiceResponse).add(linkTo(methodOn(AdminServiceController.class).get(id)).withSelfRel()));
     }
 
 
