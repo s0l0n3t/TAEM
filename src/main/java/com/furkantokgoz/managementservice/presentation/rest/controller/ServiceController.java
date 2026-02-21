@@ -3,13 +3,11 @@ package com.furkantokgoz.managementservice.presentation.rest.controller;
 
 import com.furkantokgoz.managementservice.domain.model.ServiceRequest;
 import com.furkantokgoz.managementservice.domain.model.ServiceResponse;
-import org.hibernate.grammars.hql.HqlParser;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
+
 
 import javax.swing.text.html.parser.Entity;
 
