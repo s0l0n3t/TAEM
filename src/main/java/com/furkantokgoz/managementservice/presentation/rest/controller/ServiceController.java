@@ -22,7 +22,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api/workflowservice")
-public class ServiceController {
+public class ServiceController implements IServiceController {
 
     private final Map<String, ServiceResponse> serviceResponseMap = new HashMap<>(); //demo db
 
