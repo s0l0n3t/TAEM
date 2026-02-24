@@ -62,7 +62,7 @@ public class AdminServiceController implements IAdminServiceController {
 
         for(AdminServiceResponse adminServiceResponse : serviceResponseMap.values()) {
             if(adminServiceResponse.getUsername().equals(adminServiceRequest.getUsername()) && adminServiceResponse.getPassword().equals(adminServiceRequest.getPassword())) {
-                return toModel(adminServiceResponse);
+                return toModel(adminServiceResponse).add(linkTo(methodOn(AdminServiceController.class).get(adminServiceResponse.getId())).withSelfRel());
             }
         }
 
