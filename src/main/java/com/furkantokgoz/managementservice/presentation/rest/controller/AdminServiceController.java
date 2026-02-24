@@ -3,12 +3,10 @@ package com.furkantokgoz.managementservice.presentation.rest.controller;
 
 import com.furkantokgoz.managementservice.domain.model.AdminServiceRequest;
 import com.furkantokgoz.managementservice.domain.model.AdminServiceResponse;
-import jakarta.websocket.OnClose;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -53,6 +51,23 @@ public class AdminServiceController implements IAdminServiceController {
         return ResponseEntity.ok(toModel(adminServiceResponse).add(linkTo(methodOn(AdminServiceController.class).get(id)).withSelfRel()));
     }
 
+    @Override
+    public EntityModel<AdminServiceResponse> login(@RequestBody AdminServiceRequest adminServiceRequest) {
+//        AdminServiceResponse adminServiceResponse = serviceResponseMap.values().stream()
+//                .filter(admin -> admin.getUsername().equals(adminServiceRequest.getUsername()))
+//                .filter(admin -> admin.getPassword().equals(adminServiceRequest.getPassword()))
+//                .findFirst()
+//                .orElseThrow(() -> new NoSuchElementException(HttpStatus.NOT_FOUND.toString()));
+//        return toModel(adminServiceResponse).add(linkTo(methodOn(AdminServiceController.class).get(adminServiceResponse.getId())).withSelfRel());
+
+        for(AdminServiceResponse adminServiceResponse : serviceResponseMap.values()) {
+            if(adminServiceResponse.getUsername().equals(adminServiceRequest.getUsername()) && adminServiceResponse.getPassword().equals(adminServiceRequest.getPassword())) {
+                return toModel(adminServiceResponse);
+            }
+        }
+
+        throw new NoSuchElementException(HttpStatus.NOT_FOUND.toString());
+    }
 
 
     private EntityModel<AdminServiceResponse> toModel(AdminServiceResponse adminServiceResponse) {
