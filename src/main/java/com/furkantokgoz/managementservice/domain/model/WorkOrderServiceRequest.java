@@ -8,13 +8,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.ZonedDateTime;
-import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ServiceRequest {
+public class WorkOrderServiceRequest {
     // Validation will be on business layer.
     @NotBlank (message = "Name is needed") String serviceName;
     String serviceDescription; //Includes workflow like color.

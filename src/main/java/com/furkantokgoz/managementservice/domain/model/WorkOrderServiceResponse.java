@@ -7,13 +7,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.ZonedDateTime;
-import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ServiceResponse {
+public class WorkOrderServiceResponse {
     String id;
     String serviceName;
     String serviceDescription;

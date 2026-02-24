@@ -3,12 +3,10 @@ package com.furkantokgoz.managementservice.presentation.rest.controller;
 
 import com.furkantokgoz.managementservice.domain.model.AdminServiceRequest;
 import com.furkantokgoz.managementservice.domain.model.AdminServiceResponse;
-import com.furkantokgoz.managementservice.domain.model.ServiceResponse;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -19,8 +17,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
-@RequestMapping("/api/adminservice")
-public class AdminServiceController {
+@RequestMapping("/api/admin")
+public class AdminServiceController implements IAdminServiceController {
 
     private final Map<String, AdminServiceResponse> serviceResponseMap = new HashMap<>();//demo db
 
