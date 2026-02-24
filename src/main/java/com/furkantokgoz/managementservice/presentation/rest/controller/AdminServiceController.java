@@ -3,6 +3,7 @@ package com.furkantokgoz.managementservice.presentation.rest.controller;
 
 import com.furkantokgoz.managementservice.domain.model.AdminServiceRequest;
 import com.furkantokgoz.managementservice.domain.model.AdminServiceResponse;
+import jakarta.websocket.OnClose;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,17 +18,15 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
-@RequestMapping("/api/admin")
 public class AdminServiceController implements IAdminServiceController {
 
     private final Map<String, AdminServiceResponse> serviceResponseMap = new HashMap<>();//demo db
 
-
-    @GetMapping("/{id}")
+    @Override
     public EntityModel<AdminServiceResponse> get(@PathVariable String id) {
         return toModel(serviceResponseMap.get(id)).add(linkTo(methodOn(AdminServiceController.class).get(id)).withSelfRel());
     }
-    @PostMapping()
+    @Override
     public ResponseEntity<EntityModel<AdminServiceResponse>> create(@RequestBody AdminServiceRequest adminServiceRequest) {
         String id = UUID.randomUUID().toString();
         AdminServiceResponse adminServiceResponse = new AdminServiceResponse(id, adminServiceRequest.getUsername(), adminServiceRequest.getPassword());
@@ -35,7 +34,7 @@ public class AdminServiceController implements IAdminServiceController {
         return ResponseEntity.created(linkTo(methodOn((AdminServiceController.class)).get(id)).toUri()).body(toModel(adminServiceResponse));
     }
 
-    @DeleteMapping("/{id}")
+    @Override
     public ResponseEntity<?>  delete(@PathVariable String id) {
         if(!serviceResponseMap.containsKey(id)) {
             throw new NoSuchElementException(HttpStatus.NOT_FOUND.toString());
@@ -44,7 +43,7 @@ public class AdminServiceController implements IAdminServiceController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/{id}")
+    @Override
     public ResponseEntity<EntityModel<AdminServiceResponse>> update(@PathVariable String id,@RequestBody AdminServiceRequest adminServiceRequest) {
         if(!serviceResponseMap.containsKey(id)) {
             throw new NoSuchElementException(HttpStatus.NOT_FOUND.toString());
