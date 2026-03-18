@@ -52,7 +52,7 @@ public class AdminServiceController implements IAdminServiceController {
     }
 
     @Override
-    public EntityModel<AdminServiceResponse> login(@RequestBody AdminServiceRequest adminServiceRequest) {
+    public EntityModel<AdminServiceResponse> login(@RequestBody AdminServiceRequest adminServiceRequest) { //Option 1
 //        AdminServiceResponse adminServiceResponse = serviceResponseMap.values().stream()
 //                .filter(admin -> admin.getUsername().equals(adminServiceRequest.getUsername()))
 //                .filter(admin -> admin.getPassword().equals(adminServiceRequest.getPassword()))
@@ -66,12 +66,11 @@ public class AdminServiceController implements IAdminServiceController {
             }
         }
 
-        throw new NoSuchElementException(HttpStatus.NOT_FOUND.toString());
+        throw new NoSuchElementException(HttpStatus.NOT_FOUND.toString());//Option 2
     }
 
 
     private EntityModel<AdminServiceResponse> toModel(AdminServiceResponse adminServiceResponse) {
-
         //toModel link references
         return EntityModel.of(adminServiceResponse,
                 linkTo(methodOn(AdminServiceController.class).get(adminServiceResponse.getId())).withSelfRel(),

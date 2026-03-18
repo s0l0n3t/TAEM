@@ -33,13 +33,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(AccessDeniedException.class)
     public ResponseEntity<Map> handleAccessDeniedException(AccessDeniedException ex) {
         Map<String, String> errors = new HashMap<>();
-        errors.put("message", ex.getMessage());
+        errors.put("message", ex.getMessage());//switch-case block for message personalization
         return ResponseEntity.badRequest().body(errors);
     }
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map> handleException(Exception ex) { //ERROR CODE 500
         Map<String, String> errors = new HashMap<>();
-        errors.put("message", ex.getMessage());
+        errors.put("message", ex.getMessage());//switch-case block for message personalization
         return ResponseEntity.badRequest().body(errors);
     }
     //TODO:
