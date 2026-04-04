@@ -7,12 +7,12 @@ import lombok.ToString;
 @Getter
 @ToString
 @EqualsAndHashCode
-public class AdminServiceCommand {
+public class AdminCommand {
     private final String id;
     private final String username;
     private final String password;
 
-    public AdminServiceCommand(String username, String password, String id) {
+    public AdminCommand(String username, String password, String id) {
         if(username == null || username.trim().isEmpty()) {
             throw new IllegalArgumentException("Username cannot be null or empty");
         }
