@@ -1,17 +1,24 @@
 package com.furkantokgoz.managementservice.application.command;
 
-import com.furkantokgoz.managementservice.application.usecase.AdminService;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
-import java.util.UUID;
-
+@Getter
+@ToString
+@EqualsAndHashCode
 public class AdminServiceCommand {
     private final String id;
     private final String username;
     private final String password;
 
     public AdminServiceCommand(String username, String password, String id) {
+        if(username == null || username.trim().isEmpty()) {
+            throw new IllegalArgumentException("Username cannot be null or empty");
+        }
+        if(password == null || password.trim().isEmpty() || password.length() < 5) {
+            throw new IllegalArgumentException("Password cannot be null or password length less than 5");
+        }
         this.username = username;
         this.password = password;
         this.id = id;

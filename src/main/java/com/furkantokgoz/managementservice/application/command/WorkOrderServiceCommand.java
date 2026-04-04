@@ -1,8 +1,15 @@
 package com.furkantokgoz.managementservice.application.command;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
 import java.io.File;
 import java.time.ZonedDateTime;
 
+@Getter
+@ToString
+@EqualsAndHashCode
 public class WorkOrderServiceCommand {
     private final String id;
     private final String serviceCustomerDescription;
@@ -20,5 +27,5 @@ public class WorkOrderServiceCommand {
         this.serviceMultipartFile = serviceMultipartFile;
         this.serviceStartDate = ZonedDateTime.now();
         this.serviceEndDate = this.serviceStartDate;
-    }
+    } //validation
 }

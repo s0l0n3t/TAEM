@@ -20,7 +20,7 @@ public class GlobalExceptionHandler {
         Map<String, String> errors = new HashMap<>();
         for (FieldError fieldError : ex.getBindingResult().getFieldErrors()) {
             errors.put(fieldError.getField(), fieldError.getDefaultMessage());
-        };
+        }
         return ResponseEntity.badRequest().body(errors);//linkto navigation will add.
     }
 
@@ -42,6 +42,12 @@ public class GlobalExceptionHandler {
         errors.put("message", ex.getMessage());//switch-case block for message personalization
         return ResponseEntity.badRequest().body(errors);
     }
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map> handleIllegalArgumentException(IllegalArgumentException ex) {
+        Map<String, String> errors = new HashMap<>();
+        errors.put("message", ex.getMessage());
+        return ResponseEntity.badRequest().body(errors);
+    }
     //TODO:
-    //Business exception
+    //Service layer exceptions
 }
