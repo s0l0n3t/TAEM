@@ -1,8 +1,8 @@
 package com.furkantokgoz.managementservice.infrastructure.adapter.in.web.controller;
 
-import com.furkantokgoz.managementservice.domain.model.AdminServiceRequest;
-import com.furkantokgoz.managementservice.domain.model.AdminServiceResponse;
-import com.furkantokgoz.managementservice.domain.model.WorkOrderServiceResponse;
+import com.furkantokgoz.managementservice.infrastructure.adapter.in.web.dto.AdminServiceRequest;
+import com.furkantokgoz.managementservice.infrastructure.adapter.in.web.dto.AdminServiceResponse;
+import com.furkantokgoz.managementservice.infrastructure.adapter.in.web.dto.WorkOrderServiceResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;

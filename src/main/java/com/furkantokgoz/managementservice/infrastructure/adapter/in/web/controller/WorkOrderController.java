@@ -1,8 +1,8 @@
 package com.furkantokgoz.managementservice.infrastructure.adapter.in.web.controller;
 
 
-import com.furkantokgoz.managementservice.domain.model.WorkOrderServiceRequest;
-import com.furkantokgoz.managementservice.domain.model.WorkOrderServiceResponse;
+import com.furkantokgoz.managementservice.infrastructure.adapter.in.web.dto.WorkOrderServiceRequest;
+import com.furkantokgoz.managementservice.infrastructure.adapter.in.web.dto.WorkOrderServiceResponse;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.ResponseEntity;

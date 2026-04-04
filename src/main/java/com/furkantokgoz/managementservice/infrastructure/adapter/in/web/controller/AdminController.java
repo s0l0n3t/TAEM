@@ -1,7 +1,7 @@
 package com.furkantokgoz.managementservice.infrastructure.adapter.in.web.controller;
 
-import com.furkantokgoz.managementservice.domain.model.AdminServiceRequest;
-import com.furkantokgoz.managementservice.domain.model.AdminServiceResponse;
+import com.furkantokgoz.managementservice.infrastructure.adapter.in.web.dto.AdminServiceRequest;
+import com.furkantokgoz.managementservice.infrastructure.adapter.in.web.dto.AdminServiceResponse;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +17,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 public class AdminController implements IAdminController {
+    //add admincommand mapping, use command classes by usecase
 
     private final Map<String, AdminServiceResponse> serviceResponseMap = new HashMap<>();//demo db
 

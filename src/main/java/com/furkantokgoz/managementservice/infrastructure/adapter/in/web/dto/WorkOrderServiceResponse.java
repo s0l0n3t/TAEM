@@ -1,4 +1,4 @@
-package com.furkantokgoz.managementservice.domain.model;
+package com.furkantokgoz.managementservice.infrastructure.adapter.in.web.dto;
 
 
 import lombok.AllArgsConstructor;
@@ -19,7 +19,6 @@ public class WorkOrderServiceResponse {
     private String serviceDescription;
     private String serviceDataPath;
     private File serviceMultipartFile;
-    private ZonedDateTime serviceUploadDate;
     private ZonedDateTime serviceStartDate;//current time
     private ZonedDateTime serviceEndDate;
 }

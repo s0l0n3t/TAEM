@@ -1,12 +1,11 @@
-package com.furkantokgoz.managementservice.domain.model;
+package com.furkantokgoz.managementservice.infrastructure.adapter.in.web.dto;
 
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
+import java.io.File;
 import java.time.ZonedDateTime;
 
 @Data
@@ -15,11 +14,10 @@ import java.time.ZonedDateTime;
 @Builder
 public class WorkOrderServiceRequest {
     // Validation will be on business layer.
-    @NotBlank (message = "Name is needed") private String serviceCustomerDescription;
+    @NotBlank (message = "Customer name is needed") private String serviceCustomerDescription;
     private String serviceDescription; //Includes workflow like color.
     @NotBlank (message = "Path is needed") private String serviceDataPath;
-    private ZonedDateTime serviceEndDate;
+    @NotNull(message = "File is needed") private File serviceMultipartFile;
+    @NotNull(message = "EndDate is needed") private ZonedDateTime serviceEndDate;
     private ZonedDateTime serviceStartDate;//Current date
-
-
 }

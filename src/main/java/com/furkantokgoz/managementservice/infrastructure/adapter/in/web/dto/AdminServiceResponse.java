@@ -1,4 +1,4 @@
-package com.furkantokgoz.managementservice.domain.model;
+package com.furkantokgoz.managementservice.infrastructure.adapter.in.web.dto;
 
 
 import lombok.AllArgsConstructor;
