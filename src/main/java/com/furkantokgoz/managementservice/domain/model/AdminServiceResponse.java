@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class AdminServiceResponse {
-    private String id;
+    private String id; //creating UUID
     private String username;
     private String password;
 }

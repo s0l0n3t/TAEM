@@ -15,11 +15,11 @@ import java.time.ZonedDateTime;
 @Builder
 public class WorkOrderServiceRequest {
     // Validation will be on business layer.
-    @NotBlank (message = "Name is needed") String serviceCustomerDescription;
-    String serviceDescription; //Includes workflow like color.
-    @NotBlank (message = "Path is needed") String serviceDataPath;
-    ZonedDateTime serviceEndDate;
-    ZonedDateTime serviceStartDate;//Current date
+    @NotBlank (message = "Name is needed") private String serviceCustomerDescription;
+    private String serviceDescription; //Includes workflow like color.
+    @NotBlank (message = "Path is needed") private String serviceDataPath;
+    private ZonedDateTime serviceEndDate;
+    private ZonedDateTime serviceStartDate;//Current date
 
 
 }

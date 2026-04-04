@@ -14,12 +14,12 @@ import java.time.ZonedDateTime;
 @AllArgsConstructor
 @Builder
 public class WorkOrderServiceResponse {
-    String id;
-    String serviceCustomerDescription;
-    String serviceDescription;
-    String serviceDataPath;
-    File serviceMultipartFile;
-    ZonedDateTime serviceUploadDate;
-    ZonedDateTime serviceStartDate;//current time
-    ZonedDateTime serviceEndDate;
+    private String id;
+    private String serviceCustomerDescription;
+    private String serviceDescription;
+    private String serviceDataPath;
+    private File serviceMultipartFile;
+    private ZonedDateTime serviceUploadDate;
+    private ZonedDateTime serviceStartDate;//current time
+    private ZonedDateTime serviceEndDate;
 }
