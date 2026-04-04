@@ -1,14 +1,10 @@
 package com.furkantokgoz.managementservice.presentation.rest.exception;
 
 
-import com.furkantokgoz.managementservice.presentation.rest.controller.ServiceController;
-import org.apache.catalina.mapper.Mapper;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.http.HttpStatus;
+//import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
-import org.springframework.web.ErrorResponse;
-import org.springframework.web.bind.MethodArgumentNotValidException;
+        import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -28,30 +24,22 @@ public class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(errors);//linkto navigation will add.
     }
 
-    @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<Map> handleDataIntegrityViolationException(DataIntegrityViolationException ex) {
-        Map<String, String> errors = new HashMap<>();
-        errors.put("message", ex.getMessage());
-        return ResponseEntity.badRequest().body(errors);
-    }
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map> handleValidationException(MethodArgumentNotValidException ex) {
-        Map<String, String> errors = new HashMap<>();
-        for (FieldError fieldError : ex.getBindingResult().getFieldErrors()) {
-            errors.put(fieldError.getField(), fieldError.getDefaultMessage());
-        }
-        return ResponseEntity.badRequest().body(errors);
-    }
+//    @ExceptionHandler(DataIntegrityViolationException.class)
+//    public ResponseEntity<Map> handleDataIntegrityViolationException(DataIntegrityViolationException ex) {
+//        Map<String, String> errors = new HashMap<>();
+//        errors.put("message", ex.getMessage());
+//        return ResponseEntity.badRequest().body(errors);
+//    }
     @ExceptionHandler(AccessDeniedException.class)
     public ResponseEntity<Map> handleAccessDeniedException(AccessDeniedException ex) {
         Map<String, String> errors = new HashMap<>();
-        errors.put("message", ex.getMessage());
+        errors.put("message", ex.getMessage());//switch-case block for message personalization
         return ResponseEntity.badRequest().body(errors);
     }
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map> handleException(Exception ex) { //ERROR CODE 500
         Map<String, String> errors = new HashMap<>();
-        errors.put("message", ex.getMessage());
+        errors.put("message", ex.getMessage());//switch-case block for message personalization
         return ResponseEntity.badRequest().body(errors);
     }
     //TODO:
