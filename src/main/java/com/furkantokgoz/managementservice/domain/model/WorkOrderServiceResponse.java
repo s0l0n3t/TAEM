@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.File;
 import java.time.ZonedDateTime;
 
 @Data
@@ -14,11 +15,11 @@ import java.time.ZonedDateTime;
 @Builder
 public class WorkOrderServiceResponse {
     String id;
-    String serviceName;
+    String serviceCustomerDescription;
     String serviceDescription;
-    String dataFileName;
-    ZonedDateTime serviceStartDate;
+    String serviceDataPath;
+    File serviceMultipartFile;
+    ZonedDateTime serviceUploadDate;
+    ZonedDateTime serviceStartDate;//current time
     ZonedDateTime serviceEndDate;
-
-
 }

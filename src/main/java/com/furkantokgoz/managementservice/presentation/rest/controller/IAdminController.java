@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "AdminService API", description = "Admin user operations")
 @RequestMapping("/api/admin")
-public interface IAdminServiceController {
+public interface IAdminController {
     @Operation(summary = "Get admin by ID",description = "Retrieve an admin using its unique identifier")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200",description = "admin found"),

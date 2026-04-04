@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-public class SecurityBeansConfig {
+public class SecurityBeansConfig {//One timed encryption
 
 //    @Bean
 //    public PasswordEncoder passwordEncoder() {

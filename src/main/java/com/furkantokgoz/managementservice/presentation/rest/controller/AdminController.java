@@ -16,20 +16,20 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
-public class AdminServiceController implements IAdminServiceController {
+public class AdminController implements IAdminController {
 
     private final Map<String, AdminServiceResponse> serviceResponseMap = new HashMap<>();//demo db
 
     @Override
     public EntityModel<AdminServiceResponse> get(@PathVariable String id) {
-        return toModel(serviceResponseMap.get(id)).add(linkTo(methodOn(AdminServiceController.class).get(id)).withSelfRel());
+        return toModel(serviceResponseMap.get(id)).add(linkTo(methodOn(AdminController.class).get(id)).withSelfRel());
     }
     @Override
     public ResponseEntity<EntityModel<AdminServiceResponse>> create(@RequestBody AdminServiceRequest adminServiceRequest) {
         String id = UUID.randomUUID().toString();
         AdminServiceResponse adminServiceResponse = new AdminServiceResponse(id, adminServiceRequest.getUsername(), adminServiceRequest.getPassword());
         serviceResponseMap.put(id, adminServiceResponse);
-        return ResponseEntity.created(linkTo(methodOn((AdminServiceController.class)).get(id)).toUri()).body(toModel(adminServiceResponse));
+        return ResponseEntity.created(linkTo(methodOn((AdminController.class)).get(id)).toUri()).body(toModel(adminServiceResponse));
     }
 
     @Override
@@ -48,7 +48,7 @@ public class AdminServiceController implements IAdminServiceController {
         }
         AdminServiceResponse adminServiceResponse = new AdminServiceResponse(UUID.randomUUID().toString(), adminServiceRequest.getUsername(), adminServiceRequest.getPassword());
         serviceResponseMap.put(adminServiceResponse.getId(), adminServiceResponse);
-        return ResponseEntity.ok(toModel(adminServiceResponse).add(linkTo(methodOn(AdminServiceController.class).get(id)).withSelfRel()));
+        return ResponseEntity.ok(toModel(adminServiceResponse).add(linkTo(methodOn(AdminController.class).get(id)).withSelfRel()));
     }
 
     @Override
@@ -59,10 +59,10 @@ public class AdminServiceController implements IAdminServiceController {
 //                .findFirst()
 //                .orElseThrow(() -> new NoSuchElementException(HttpStatus.NOT_FOUND.toString()));
 //        return toModel(adminServiceResponse).add(linkTo(methodOn(AdminServiceController.class).get(adminServiceResponse.getId())).withSelfRel());
-
+        serviceResponseMap.put("admin",new AdminServiceResponse(UUID.randomUUID().toString(), adminServiceRequest.getUsername(), adminServiceRequest.getPassword()));
         for(AdminServiceResponse adminServiceResponse : serviceResponseMap.values()) {
             if(adminServiceResponse.getUsername().equals(adminServiceRequest.getUsername()) && adminServiceResponse.getPassword().equals(adminServiceRequest.getPassword())) {
-                return toModel(adminServiceResponse).add(linkTo(methodOn(AdminServiceController.class).get(adminServiceResponse.getId())).withSelfRel());
+                return toModel(adminServiceResponse).add(linkTo(methodOn(AdminController.class).get(adminServiceResponse.getId())).withSelfRel());
             }
         }
 
@@ -73,7 +73,7 @@ public class AdminServiceController implements IAdminServiceController {
     private EntityModel<AdminServiceResponse> toModel(AdminServiceResponse adminServiceResponse) {
         //toModel link references
         return EntityModel.of(adminServiceResponse,
-                linkTo(methodOn(AdminServiceController.class).get(adminServiceResponse.getId())).withSelfRel(),
-                linkTo(methodOn(AdminServiceController.class).get(adminServiceResponse.getId())).withRel("create"));
+                linkTo(methodOn(AdminController.class).get(adminServiceResponse.getId())).withSelfRel(),
+                linkTo(methodOn(AdminController.class).get(adminServiceResponse.getId())).withRel("create"));
     }
 }

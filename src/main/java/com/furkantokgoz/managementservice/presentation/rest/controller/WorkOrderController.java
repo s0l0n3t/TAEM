@@ -34,10 +34,10 @@ public class WorkOrderController implements IWorkOrderController {
             throw new NoSuchElementException("Service not found");
         }
         WorkOrderServiceResponse workOrderServiceResponse = WorkOrderServiceResponse.builder().id(id)
-                .dataFileName(workOrderServiceRequest.getDataFileName())
+                .serviceDataPath(workOrderServiceRequest.getServiceDataPath())
                 .serviceDescription(workOrderServiceRequest.getServiceDescription())
                 .serviceEndDate(workOrderServiceRequest.getServiceEndDate())
-                .serviceName(workOrderServiceRequest.getServiceName())
+                .serviceCustomerDescription(workOrderServiceRequest.getServiceCustomerDescription())
                 .serviceStartDate(workOrderServiceRequest.getServiceStartDate())
                 .build();
         serviceResponseMap.put(id, workOrderServiceResponse);
@@ -71,8 +71,8 @@ public class WorkOrderController implements IWorkOrderController {
         String id = UUID.randomUUID().toString();
 
         serviceResponseMap.put(id, WorkOrderServiceResponse.builder().id(id)
-                .serviceName("demoCompany")
-                .dataFileName("demoCompany"+ LocalDateTime.now().toString())
+                .serviceCustomerDescription("demoCompany")
+                .serviceDataPath("demoCompany"+ LocalDateTime.now().toString())
                 .serviceStartDate(ZonedDateTime.now())
                 .serviceEndDate(LocalDateTime.now().plusDays(2).atZone(ZoneId.systemDefault()))
                 .build());
