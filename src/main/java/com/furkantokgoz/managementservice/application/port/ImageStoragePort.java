@@ -1,4 +1,4 @@
-package com.furkantokgoz.managementservice.domain.port;
+package com.furkantokgoz.managementservice.application.port;
 
 public interface ImageStoragePort {
     public void uploadPhoto(String filePath);

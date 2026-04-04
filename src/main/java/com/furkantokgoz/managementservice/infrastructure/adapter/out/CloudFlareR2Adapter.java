@@ -1,6 +1,6 @@
 package com.furkantokgoz.managementservice.infrastructure.adapter.out;
 
-import com.furkantokgoz.managementservice.domain.port.ImageStoragePort;
+import com.furkantokgoz.managementservice.application.port.ImageStoragePort;
 
 public class CloudFlareR2Adapter implements ImageStoragePort {
     //identify s3client
