@@ -1,4 +1,4 @@
-package com.furkantokgoz.managementservice.infrastructure.persistence.pgdb.adapter;
+package com.furkantokgoz.managementservice.infrastructure.adapter.out;
 
 import com.furkantokgoz.managementservice.domain.port.ImageStoragePort;
 

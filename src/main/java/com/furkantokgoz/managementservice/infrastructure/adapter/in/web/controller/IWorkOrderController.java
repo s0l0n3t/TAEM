@@ -1,4 +1,4 @@
-package com.furkantokgoz.managementservice.presentation.rest.controller;
+package com.furkantokgoz.managementservice.infrastructure.adapter.in.web.controller;
 
 import com.furkantokgoz.managementservice.domain.model.WorkOrderServiceRequest;
 import com.furkantokgoz.managementservice.domain.model.WorkOrderServiceResponse;

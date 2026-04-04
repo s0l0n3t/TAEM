@@ -1,4 +1,4 @@
-package com.furkantokgoz.managementservice.infrastructure.persistence.pgdb.config;
+package com.furkantokgoz.managementservice.infrastructure.adapter.in.web.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

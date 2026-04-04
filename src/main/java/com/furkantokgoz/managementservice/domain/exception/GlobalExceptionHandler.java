@@ -1,4 +1,4 @@
-package com.furkantokgoz.managementservice.presentation.rest.exception;
+package com.furkantokgoz.managementservice.domain.exception;
 
 
 //import org.springframework.dao.DataIntegrityViolationException;

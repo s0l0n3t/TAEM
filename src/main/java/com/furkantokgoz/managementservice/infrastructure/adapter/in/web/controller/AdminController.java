@@ -1,5 +1,4 @@
-package com.furkantokgoz.managementservice.presentation.rest.controller;
-
+package com.furkantokgoz.managementservice.infrastructure.adapter.in.web.controller;
 
 import com.furkantokgoz.managementservice.domain.model.AdminServiceRequest;
 import com.furkantokgoz.managementservice.domain.model.AdminServiceResponse;
@@ -11,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.UUID;
+
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -59,7 +59,8 @@ public class AdminController implements IAdminController {
 //                .findFirst()
 //                .orElseThrow(() -> new NoSuchElementException(HttpStatus.NOT_FOUND.toString()));
 //        return toModel(adminServiceResponse).add(linkTo(methodOn(AdminServiceController.class).get(adminServiceResponse.getId())).withSelfRel());
-        serviceResponseMap.put("admin",new AdminServiceResponse(UUID.randomUUID().toString(), adminServiceRequest.getUsername(), adminServiceRequest.getPassword()));
+        String id = UUID.randomUUID().toString();
+        serviceResponseMap.put(id,new AdminServiceResponse(id, adminServiceRequest.getUsername(), adminServiceRequest.getPassword()));
         for(AdminServiceResponse adminServiceResponse : serviceResponseMap.values()) {
             if(adminServiceResponse.getUsername().equals(adminServiceRequest.getUsername()) && adminServiceResponse.getPassword().equals(adminServiceRequest.getPassword())) {
                 return toModel(adminServiceResponse).add(linkTo(methodOn(AdminController.class).get(adminServiceResponse.getId())).withSelfRel());
