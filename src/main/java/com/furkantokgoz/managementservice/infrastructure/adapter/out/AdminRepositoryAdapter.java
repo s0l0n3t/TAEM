@@ -3,7 +3,9 @@ package com.furkantokgoz.managementservice.infrastructure.adapter.out;
 import com.furkantokgoz.managementservice.application.port.repository.AdminRepository;
 import com.furkantokgoz.managementservice.domain.model.Admin;
 import com.furkantokgoz.managementservice.infrastructure.adapter.out.persistence.AdminRepositoryImpl;
+import org.springframework.stereotype.Repository;
 
+@Repository //@Component annotation is same.
 public class AdminRepositoryAdapter implements AdminRepository {
 
     private final AdminRepositoryImpl jpaAdminRepository;

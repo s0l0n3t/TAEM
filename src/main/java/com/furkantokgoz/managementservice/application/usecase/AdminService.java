@@ -10,13 +10,15 @@ import java.util.UUID;
 @Service
 public class AdminService {
 
+
     private final AdminRepository adminRepository;
 
     public AdminService(AdminRepository adminRepository) {
         this.adminRepository = adminRepository;
     }
 
-    public String save(AdminCommand adminCommand) {
+
+    public Admin save(AdminCommand adminCommand) {
         //logic rule check
         if(adminRepository.existsByUsername(adminCommand.getUsername())) {
             throw new RuntimeException("Username already exists"); //modify global exception UserAlreadyExistException
@@ -29,7 +31,7 @@ public class AdminService {
         );
 
         Admin savedAdmin = adminRepository.save(adminEntityModel);
-        return "";
+        return savedAdmin;
     }
 
 }
