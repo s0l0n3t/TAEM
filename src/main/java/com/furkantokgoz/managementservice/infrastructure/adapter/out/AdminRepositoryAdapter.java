@@ -1,15 +1,15 @@
 package com.furkantokgoz.managementservice.infrastructure.adapter.out;
 
-import com.furkantokgoz.managementservice.application.port.repository.AdminRepository;
+import com.furkantokgoz.managementservice.application.port.repository.AdminRepositoryPort;
 import com.furkantokgoz.managementservice.domain.model.Admin;
 import com.furkantokgoz.managementservice.infrastructure.adapter.out.persistence.AdminRepositoryImpl;
 import org.springframework.stereotype.Repository;
 
 @Repository //@Component annotation is same.
-public class AdminRepositoryAdapter implements AdminRepository {
+public class AdminRepositoryAdapter implements AdminRepositoryPort {
 
     private final AdminRepositoryImpl jpaAdminRepository;
-    //add mapper
+//    add mapper
 
     public AdminRepositoryAdapter(AdminRepositoryImpl jpaAdminRepository) {
         this.jpaAdminRepository = jpaAdminRepository;

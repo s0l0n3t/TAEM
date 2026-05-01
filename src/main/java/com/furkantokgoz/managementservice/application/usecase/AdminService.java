@@ -1,7 +1,7 @@
 package com.furkantokgoz.managementservice.application.usecase;
 
 import com.furkantokgoz.managementservice.application.command.AdminCommand;
-import com.furkantokgoz.managementservice.application.port.repository.AdminRepository;
+import com.furkantokgoz.managementservice.application.port.repository.AdminRepositoryPort;
 import com.furkantokgoz.managementservice.domain.model.Admin;
 import org.springframework.stereotype.Service;
 
@@ -11,16 +11,16 @@ import java.util.UUID;
 public class AdminService {
 
 
-    private final AdminRepository adminRepository;
+    private final AdminRepositoryPort adminRepositoryPort;
 
-    public AdminService(AdminRepository adminRepository) {
-        this.adminRepository = adminRepository;
+    public AdminService(AdminRepositoryPort adminRepositoryPort) {
+        this.adminRepositoryPort = adminRepositoryPort;
     }
 
 
     public Admin save(AdminCommand adminCommand) {
         //logic rule check
-        if(adminRepository.existsByUsername(adminCommand.getUsername())) {
+        if(adminRepositoryPort.existsByUsername(adminCommand.getUsername())) {
             throw new RuntimeException("Username already exists"); //modify global exception UserAlreadyExistException
         }
         //encode password bcrypt
@@ -30,7 +30,7 @@ public class AdminService {
                 adminCommand.getPassword()
         );
 
-        Admin savedAdmin = adminRepository.save(adminEntityModel);
+        Admin savedAdmin = adminRepositoryPort.save(adminEntityModel);
         return savedAdmin;
     }
 
